@@ -5,11 +5,9 @@ Home: https://pypi.org/project/maxminddb/#description
 
 Package license: Apache-2.0
 
-Feedstock license: BSD-3-Clause
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/maxminddb-feedstock/blob/master/LICENSE.txt)
 
 Summary: This is a Python module for reading MaxMind DB files
-
-
 
 Current build status
 ====================

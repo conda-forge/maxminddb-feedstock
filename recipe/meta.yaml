@@ -1,5 +1,5 @@
 {% set name = "maxminddb" %}
-{% set version = "2.0.2" %}
+{% set version = "2.0.3" %}
 
 package:
   name: {{ name|lower }}
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: b95d8ed21799e6604683669c7ed3c6a184fcd92434d5762dccdb139b4f29e597
+  sha256: 47e86a084dd814fac88c99ea34ba3278a74bc9de5a25f4b815b608798747c7dc
 
 build:
   noarch: python
   number: 0
-  script: "{{ PYTHON }} -m pip install . -vv"
+  script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
@@ -30,7 +30,7 @@ about:
   license: Apache-2.0
   license_family: APACHE
   license_file: LICENSE
-  summary: 'This is a Python module for reading MaxMind DB files'
+  summary: This is a Python module for reading MaxMind DB files
 
 extra:
   recipe-maintainers:
