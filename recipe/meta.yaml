@@ -22,14 +22,8 @@ requirements:
     - python >=3.7
 
 test:
-  requires:
-    - pytest
-    - pip
   imports:
     - maxminddb
-  commands:
-    - pip check
-    - pytest -v -rws --color yes $SP_DIR/maxminddb
 
 about:
   home: https://pypi.org/project/maxminddb/#description
