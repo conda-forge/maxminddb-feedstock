@@ -1,5 +1,5 @@
 {% set name = "maxminddb" %}
-{% set version = "2.4.0" %}
+{% set version = "2.5.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 81e54e53408bd502650e5969ccba16780af659ec1db1c44b2c997e4330a5ed96
+  sha256: dab710866fe6a55d94b2c4e8bb72363f651e54218d4302cbd18939c46a6363d4
 
 build:
   noarch: python
