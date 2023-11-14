@@ -1,36 +1,64 @@
 {% set name = "maxminddb" %}
-{% set version = "2.4.0" %}
+{% set version = "2.5.1" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 81e54e53408bd502650e5969ccba16780af659ec1db1c44b2c997e4330a5ed96
+  - url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+    sha256: 4807d374e645bd68334e4f487ba85a27189dbc1267a98e644aa686a7927e0559
+    patches:
+      - patches/0001-Remove-runtime-dependency-on-setuptools.patch
+  - git_url: https://github.com/maxmind/MaxMind-DB-Reader-python.git
+    ref: v{{version}}
+    folder: git-repo
 
 build:
-  noarch: python
   number: 0
-  script: {{ PYTHON }} -m pip install . -vv
+  skip: true  # [py<38]
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
+  build:
+    - {{ compiler('c') }}
+    - git  # [not win]
+    - m2-patch  # [win]
+    - patch  # [not win]
   host:
-    - python >=3.7
+    - python
     - pip
+    - setuptools
+    - wheel
   run:
-    - python >=3.7
+    - python
 
 test:
+  source_files:
+    - git-repo/tests
   imports:
     - maxminddb
+  commands:
+    - pip check
+    - cd git-repo
+    - echo "empty" > README.rst
+    - pytest -v tests -x
+  requires:
+    - pip
+    - pytest
 
 about:
-  home: https://pypi.org/project/maxminddb/#description
+  home: https://maxminddb.readthedocs.io
   license: Apache-2.0
   license_family: APACHE
   license_file: LICENSE
   summary: This is a Python module for reading MaxMind DB files
+  description: |
+    This is a Python module for reading MaxMind DB files. The module includes both a pure Python reader and an optional C extension.
+
+    MaxMind DB is a binary file format that stores data indexed by IP address subnets (IPv4 or IPv6).
+  dev_url: https://github.com/maxmind/MaxMind-DB-Reader-python
+  doc_url: https://maxminddb.readthedocs.io
 
 extra:
   recipe-maintainers:

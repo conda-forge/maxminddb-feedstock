@@ -1,0 +1,26 @@
+From 4c507d306e7f44ffe4cadfe9e92669e7b8b32f52 Mon Sep 17 00:00:00 2001
+From: Jean-Christophe Morin <jcmorin@anaconda.com>
+Date: Tue, 14 Nov 2023 13:47:56 -0500
+Subject: [PATCH] Remove runtime dependency on setuptools
+
+---
+ pyproject.toml | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 0b40f93..f38fe6d 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -9,9 +9,6 @@ description = "Reader for the MaxMind DB format"
+ authors = [
+     {name = "Gregory Oschwald", email = "goschwald@maxmind.com"},
+ ]
+-dependencies = [
+-    "setuptools>=68.2.2",
+-]
+ requires-python = ">=3.8"
+ readme = "README.rst"
+ license = {text = "Apache License, Version 2.0"}
+-- 
+2.42.1
+
