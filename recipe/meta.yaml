@@ -1,13 +1,13 @@
 {% set name = "maxminddb" %}
-{% set version = "2.6.2" %}
+{% set version = "2.8.2" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 7d842d32e2620abc894b7d79a5a1007a69df2c6cf279a06b94c9c3913f66f264
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: 26a8e536228d8cc28c5b8f574a571a2704befce3b368ceca593a76d56b6590f9
 
 build:
   noarch: python
